@@ -1,5 +1,6 @@
 #include <iostream>
-#include "MessegeServerApp.h"
+
+#include "MessageServerApp.h"
 using namespace std;
 
 void printInstructions() {
@@ -12,7 +13,8 @@ void printInstructions() {
 }
 
 int main() {
-	MessegeServerApp* msa = new MessegeServerApp();
+	MessageServerApp msa;
+	msa.start();
 
 	cout << "Welcome to the Messege Server App!" << endl;
 	printInstructions();
@@ -26,24 +28,23 @@ int main() {
 		cin >> command;
 
 		if (command == "lu") {
-			msa->listAllUsers();
+			msa.listAllUsers();
 		}
 		else if (command == "lcu") {
-			msa->listAllConnectedUsers();
+			msa.listAllConnectedUsers();
 		}
 		else if (command == "ls") {
-			msa->listAllSessions();
+			msa.listAllSessions();
 		}
 		else if (command == "lr") {\
-			msa->listAllRooms();
+			msa.listAllRooms();
 		}
 		else if (command == "lru") {
 			// TODO: switch from equals to contains, put room number into function
-			msa->listAllUsersInRooms("STAM");
+			msa.listAllUsersInRooms("STAM");
 		}
 		else if (command == "x") {
 			loop = false;
-			delete msa;
 		}
 		else if ((command == "h") || (command == "help")) {
 			printInstructions();
