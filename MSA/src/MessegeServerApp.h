@@ -6,7 +6,8 @@ using namespace std;
 class MessegeServerApp {
 private:
 	TCPSocket* serverSocket;
-	fstream usersFile;
+	ofstream outputUsersFile;
+	ifstream inputUsersFile;
 
 public:
 	MessegeServerApp();
