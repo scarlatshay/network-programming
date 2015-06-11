@@ -1,15 +1,22 @@
 #include <iostream>
 #include <fstream>
 #include "TCPSocket.h"
+#include "MThread.h"
 using namespace std;
 
-class MessegeServerApp {
+class MessageServerApp : public MThread {
 private:
+	bool running;
 	TCPSocket* serverSocket;
-	fstream usersFile;
+	ofstream outputUsersFile;
+	ifstream inputUsersFile;
 
 public:
-	MessegeServerApp();
+	MessageServerApp();
+
+	// Main functional methods
+	void run();
+	void close();
 
 	// CLI Methods
 	void listAllUsers(); 						// lu
@@ -18,5 +25,5 @@ public:
 	void listAllRooms(); 						// lr
 	void listAllUsersInRooms(string roomName);	// lru
 
-	virtual ~MessegeServerApp();
+	virtual ~MessageServerApp();
 };
