@@ -256,7 +256,7 @@ bool MessageClientApp::connectToServer(string ip, int command)
 	if(server == NULL)
 	{
 		flag = true;
-		server = new TCPSocket(ip, SERVER_PORT);
+		server = new TCPSocket(ip, MSA_SERVER_PORT);
 
 		//getting port listening:
 		this->listenerPort = readCommand(server);
