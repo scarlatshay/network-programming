@@ -7,7 +7,6 @@
 #define CLIENTUDPLISTENER_H_
 #include "MThread.h"
 #include "UDPSocket.h"
-#include "ServerProtocol.h"
 
 using namespace std;
 

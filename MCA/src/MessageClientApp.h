@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class MessageClientApp{
+class MessageClientApp:MThread {
 
 	bool connectedToserver;
 	bool clientOnSession;
@@ -51,6 +51,6 @@ public:
 	void closeSession();
 	void close();
 	void run();
-
+	~MessageClientApp();
 
 };

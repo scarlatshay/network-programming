@@ -179,6 +179,7 @@ void MessageClientApp::run()
 		case ERROR:
 			cout<<"General ERROR!"<<endl;
 			break;
+
 /*
 		case ROOM_EXISTS:
 			cout<<"Room already exists, choose another name!"<<endl;
@@ -262,7 +263,7 @@ bool MessageClientApp::connectToServer(string ip, int command)
 
 		//creating new listener:
 		listener = new ClientUDPListener(listenerPort);
-		cout<<"New ClientUDPListener on port:"<<listenerPort<<" so client can receive & send massages"<<endl;
+		cout<<"New ClientUDPListener on port:"<<listenerPort<<" so client can receive & send messages"<<endl;
 
 		//sending command to server:
 		sendCommand(command,server);
@@ -459,7 +460,7 @@ void MessageClientApp::deleteChatRoom(string roomName)
 	else
 	{
 		//Send a command to the server
-		sendCommand(CLOSE_CHATROOM, server);
+		sendCommand(CLOSE__CHATROOM, server);
 
 		//Send the name of the room to the server
 		sendData(roomName, server);
@@ -471,8 +472,8 @@ void MessageClientApp::deleteChatRoom(string roomName)
 
 //TODO - Please EXPLAIN it, WTF?
 
-//sends massage to a peer or a chat room
-void MessageClientApp::sendMessageToPeer(string massage)
+//sends message to a peer or a chat room
+void MessageClientApp::sendMessageToPeer(string message)
 {
 	//Check if you are connected
 	if(status < STATUS_OPEN)
@@ -482,7 +483,7 @@ void MessageClientApp::sendMessageToPeer(string massage)
 	else
 	{
 		//List of peers that are connected
-		OpenedPeers::iterator iter;
+		tOpenedPeers::iterator iter;
 		for(iter = peers.begin(); iter != peers.end() ; iter++)
 		{
 			string peer = (*iter).second;
@@ -491,7 +492,7 @@ void MessageClientApp::sendMessageToPeer(string massage)
 			string portString = peer.substr(tmp+1, peer.length());
 			int port = atoi(portString.c_str());
 			//Send the message:
-			listener->getUDPSocket()->sendTo(("["+name+"]: "+massage), ipString, port);
+			listener->getUDPSocket()->sendTo(("["+name+"]: "+message), ipString, port);
 		}
 	}
 }
@@ -526,8 +527,8 @@ void MessageClientApp::closeSession()
 		sendCommand(CLOSE_SESSION, server);
 	else if(status == ROOM_STATUS)
 	{
-		//Sending everyone massage that you are exiting - bey bey fuckers!
-		sendMassageToPeer(name+" has left the room! I will be back!\n");
+		//Sending everyone message that you are exiting - bey bey fuckers!
+		sendMessageToPeer(name+" has left the room! I will be back!\n");
 
 		//Send command to the server - I Obay YOU!
 		sendCommand(CLOSE__CHATROOM, server);
@@ -555,7 +556,7 @@ void MessageClientApp::close()
 }
 
 
-MessageClientApp()::~MessageClientApp()() {
+MessageClientApp::~MessageClientApp(){
 
 }
 

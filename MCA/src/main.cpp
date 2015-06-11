@@ -27,7 +27,8 @@ void printInstructions() {
 	cout << "To close the app: x" << endl;
 }
 
-int main() {
+int main()
+{
 	MessageClientApp* mca = new MessageClientApp();
 
 	cout << "Welcome to the Message Client App!" << endl;
@@ -37,86 +38,97 @@ int main() {
 	string roomname;
 	string username;
 
-	while (loop) {
+	while (loop)
+	{
 		string msg;
 		string command;
 		cout << "input> ";
 		cin >> command;
 
-		if (command == "lu") {
-			mca->listAllUsers();
+		if(command == "c")
+		{
+			cout<<"login / signup ?"<<endl;
+			string tmp;
+			cin>>msg;
+			cin>>tmp;
+			if(tmp == "login")
+				mca->connectToServer(msg,LOGIN);
+			else if(tmp == "signup")
+				mca->connectToServer(msg,REGISTER);
+			else
+				cout<<"Connection could not be established. please try again"<<endl;
+				printInstructions();
 		}
-		else if (command == "lcu") {
-			mca->listAllConnectedUsers();
+		else if(command == "lu")
+		{
+			mca->listAllActiveUsers();
 		}
-		else if (command == "ls") {
-			mca->listAllSessions();
+		else if(command == "lcu")
+		{
+			mca->LIST_CONNECTED_USERS();
 		}
-		else if (command == "lr") {
-			mca->listAllRooms();
+		else if(command == "lr")
+		{
+			mca->listAllOpenRooms();
 		}
-		else if (command == "lru") {
-			// TODO: switch from equals to contains, put room number into function
-			mca->listAllUsersInRooms("STAM");
+		else if(command == "lru")
+		{
+			cin>>msg;
+			mca->listUsersOnChatRoom(msg);
 		}
-		else if (command == "x") {
-			loop = false;
-			delete mca;
+		else if(command == "o")
+		{
+			cin>>msg;
+			mca->openSessionWithPeer(msg);
 		}
-		else if (command == "d") {
-			//disconnect from server: d
+		else if(command == "jr")
+		{
+			cin>>msg;
+			mca->joinAChatRoom(msg);
+		}
+		else if(command == "cr")
+		{
+			cin>>msg;
+			mca->createNewChatRoom(msg);
+		}
+		else if(command == "clr")
+		{
+			cin>>msg;
+			mca->deleteChatRoom(msg);
+		}
+		else if(command == "s")
+		{
+			cin>>msg;
+			mca->sendMessageToPeer(msg);
+		}
+		else if(command == "l")
+		{
+			mca->printClientStatus();
+		}
+		else if(command == "cs")
+		{
+			mca->closeSession();
+		}
+		else if(command == "d")
+		{
 			mca->disconnect();
 		}
-		else if (command == "cs") {
-			//Disconnect the open session / exit from a room
-			mca->disconnectSession();
-
-		}
-		else if (command == "register") {
-			//To register the new user with the given password and login: register <user> <password> //TODO
-			mca->registerNewUser();
-
-		}
-		else if (command == "login") {
-			//To login with the user and password: login <user> <password> //TODO
-			mca->loginWithCreds();
-
-		}
-		else if (command == "c") {
-			//To connect to a server with the given ip
-			mca->connectToClientWithIP();
-
-		}
-		else if (command == "o l") {
-			//To print the current status of the client
-			mca->printStatus();
-
-		}
-		else if (command == "o s") {
-			//To send a message: ○ s <message>
-			mca->sendMessage();
-
-		}
-		else if ((command == "o") && (command == username)) {
-			//To open a session with the user: o <username>
-			mca->openSessionWithUame();
-
-		}
-		else if ((command == "o") || (command == roomname)) {
-			//To enter a chat room: ○ or <room name>
-			mca->enterChatRoom();
-
-		}
-
-		else if ((command == "h") || (command == "help")) {
+		else if(command == "help")
+		{
 			printInstructions();
 		}
-		else {
-			cout << "Wrong command: \"" << command << "\"." << endl;
-			cout << "For instructions type \"h\" or \"help\"" << endl;
+		else if(command == "x")
+		{
+			loop = false;
 		}
-	}
+		else
+		{
+			cout<<"wrong input"<<endl;
+			printInstructions();
+		}
 
 	cout << "Messenger Client App shutdown. Bye bye." << endl;
 	return 0;
+	}
+
 }

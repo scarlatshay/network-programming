@@ -1,5 +1,4 @@
 #define MSA_SERVER_PORT    5050
-
 #define LIST_USERS 1
 #define LIST_CONNECTED_USERS 2
 #define LIST_SESSIONS 3
