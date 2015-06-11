@@ -1,8 +1,9 @@
 
 #include "MessageClientApp.h"
 
+// TODO: Create listAllUsers()
 void MessageClientApp::listAllUsers() {
-	// TODO: Create listAllUsers()
+
 	cout << "list all users" << endl;
 
 	string line;
@@ -16,82 +17,87 @@ void MessageClientApp::listAllUsers() {
 	}
 }
 
+// TODO: Create listAllConnectedUsers()
 void MessageClientApp::listAllConnectedUsers() {
-	// TODO: Create listAllConnectedUsers()
+
 	cout << "list all connected users" << endl;
 }
 
+// TODO: Create listAllSessions()
 void MessageClientApp::listAllSessions() {
-	// TODO: Create listAllSessions()
+
 	cout << "list all sessions" << endl;
 }
 
+// TODO: Create listAllRooms()
 void MessageClientApp::listAllRooms() {
-	// TODO: Create listAllRooms()
+
 	cout << "list all rooms" << endl;
 }
 
+// TODO: Create listAllUsersInRoom()
 void MessageClientApp::listAllUsersInRooms(string roomName) {
-	// TODO: Create listAllUsersInRoom()
+
 	cout << "list all users in a specific room" << endl;
 }
 
+//d
 void MessageClientApp::disconnect() {
 	cout << "list all rooms" << endl;
 
 }
-//d
 
+// cs
 void MessageClientApp::disconnectSession() {
 	cout << "list all rooms" << endl;
 
 }
-// cs
 
+// register <user> <password>
 void MessageClientApp::registerNewUser() {
 	cout << "list all rooms" << endl;
 
 }
-// register <user> <password>
 
+// login <user> <password>
 void MessageClientApp::loginWithCreds() {
 	cout << "list all rooms" << endl;
 
 }
-// login <user> <password>
 
+// c
 void MessageClientApp::connectToClientWithIP() {
 	cout << "list all rooms" << endl;
 
 }
-// c
 
+// o l
 void MessageClientApp::printStatus() {
 	cout << "list all rooms" << endl;
 
 }
-// o l
 
+// ○ s <message>
 void MessageClientApp::sendMessage() {
 	cout << "list all rooms" << endl;
 
 }
-// ○ s <message>
 
+// o <username>
 void MessageClientApp::openSessionWithUame() {
 	cout << "list all rooms" << endl;
 
 }
-// o <username>
 
+// ○ or <room name>
 void MessageClientApp::enterChatRoom() {
 	cout << "list all rooms" << endl;
 
-} 						// ○ or <room name>
+}
 
-
+// TODO Create destructor
 MessageClientApp::~MessageClientApp() {
-	// TODO Create destructor
+
 
 	usersFile.close();
 	delete serverSocket;

@@ -8,6 +8,11 @@ class MessageClientApp {
 private:
 	TCPSocket* serverSocket;
 	fstream usersFile;
+	bool connectedToserver;
+	bool clientOnSession;
+	string peerName;
+	string userName;
+	string password;
 
 public:
 	MessageClientApp();
@@ -17,15 +22,16 @@ public:
 	void listAllConnectedUsers(); 				// lcu
 	void listAllSessions(); 					// ls
 	void listAllRooms(); 						// lr
-	void listAllUsersInRooms(string roomName);	// lru
-	void disconnect(); 							//d
-	void disconnectSession(); 					// cs
-	void registerNewUser(); 					// register <user> <password>
-	void loginWithCreds(); 						// login <user> <password>
-	void connectToClientWithIP(); 				// c
+	void listAllUsersInRoom(string roomName);	// lru
+	void disconnect(); 							// d
+	void closeSession(); 						// cs
+	void registerNewUser(string userName, string password); 					// register <user> <password>
+	void loginWithCreds(string userName, string password); 						// login <user> <password>
+	void connectToClientWithIP(string serverIP); 				// c
 	void printStatus(); 						// o l
-	void sendMessage(); 						// ○ s <message>
-	void openSessionWithUame(); 				// o <username>
-	void enterChatRoom(); 						// ○ or <room name>
+	void sendMessageToPeer(string message); 						// ○ s <message>
+	void openSessionWithPeer(string peerName); 				// o <username>
+	void enterChatRoom(string roomName); 						// ○ or <room name>
+	void printClientStatus();
 	virtual ~MessageClientApp();
 };
