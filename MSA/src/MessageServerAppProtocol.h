@@ -1,1 +1,15 @@
 #define MSA_SERVER_PORT    5050
+
+#define LIST_USERS 1
+#define LIST_CONNECTED_USERS 2
+#define LIST_SESSIONS 3
+#define LIST_ROOMS 4
+#define LIST_USERS_IN_ROOM 5
+#define DISCONNECT 6
+#define CLOSE_SESSION 7
+#define REGISTER 8
+#define LOGIN 9
+#define CONNECT_TO_CLIENT 10
+#define OPEN_SESSION 11
+#define ENTER_ROOM 12
+#define CLOSE_ROOM 13
