@@ -6,7 +6,6 @@
 #include "ClientUDPListener.h"
 
 ClientUDPListener::ClientUDPListener(int port) {
-	// TODO Auto-generated constructor stub
 	flag = true;
 	listener = new UDPSocket(port);
 	//start listening
@@ -30,7 +29,6 @@ UDPSocket* ClientUDPListener::getUDPSocket(){
 
 
 ClientUDPListener::~ClientUDPListener() {
-	// TODO Auto-generated destructor stub
 	flag = false;
 	listener->cclose();
 	delete listener;

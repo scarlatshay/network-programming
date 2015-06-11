@@ -470,8 +470,6 @@ void MessageClientApp::deleteChatRoom(string roomName)
 	}
 }
 
-//TODO - Please EXPLAIN it, WTF?
-
 //sends message to a peer or a chat room
 void MessageClientApp::sendMessageToPeer(string message)
 {
