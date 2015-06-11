@@ -1,37 +1,56 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <map>
+#include <stdlib.h>
 #include "TCPSocket.h"
+#include "MessageServerAppProtocol.h"
+#include "ClientUDPListener.h"
+#include "MThread.h"
+
 using namespace std;
 
-class MessageClientApp {
+class MessageClientApp{
 
-private:
-	TCPSocket* serverSocket;
-	fstream usersFile;
 	bool connectedToserver;
 	bool clientOnSession;
+	bool flag;
+	string name;
 	string peerName;
+	int listenerPort;
+	int status;
+	TCPSocket* server;
+	typedef map<string, string> tOpenedPeers;//name : ip&port
+	tOpenedPeers peers;
+	TCPSocket* serverSocket;
+	fstream usersFile;
 	string userName;
 	string password;
+	ClientUDPListener* listener; //TODO
 
 public:
 	MessageClientApp();
 
 	// CLI Methods
-	void listAllUsers(); 						// lu
-	void listAllConnectedUsers(); 				// lcu
-	void listAllSessions(); 					// ls
-	void listAllRooms(); 						// lr
-	void listAllUsersInRoom(string roomName);	// lru
-	void disconnect(); 							// d
-	void closeSession(); 						// cs
-	void registerNewUser(string userName, string password); 					// register <user> <password>
-	void loginWithCreds(string userName, string password); 						// login <user> <password>
-	void connectToClientWithIP(string serverIP); 				// c
-	void printStatus(); 						// o l
-	void sendMessageToPeer(string message); 						// ○ s <message>
-	void openSessionWithPeer(string peerName); 				// o <username>
-	void enterChatRoom(string roomName); 						// ○ or <room name>
+	int readCommand(TCPSocket* peer);
+	string readData(TCPSocket* peer);
+	void sendCommand(int command, TCPSocket* peer);
+	void sendData(string data, TCPSocket* peer);
+	bool connectToServer(string ip, int command);
+	bool isConnected();
+	bool disconnect();
+	void listAllActiveUsers();
+	void listAllOpenRooms();
+	void listUsersOnChatRoom(string roomName);
+	void openSessionWithPeer(string peerName);
+	void joinAChatRoom(string chatRoomName);
+	void createNewChatRoom(string roomName);
+	void deleteChatRoom(string roomName);
+	void sendMessageToPeer(string massage);
 	void printClientStatus();
-	virtual ~MessageClientApp();
+	void closeSession();
+	void close();
+	void run();
+
+
 };
