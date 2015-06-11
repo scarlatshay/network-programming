@@ -199,13 +199,13 @@ void MessageClientApp::run()
 			cout<<tmp<<endl;
 			break;
 
-		case LIST_CONNECTED_USERS:
+	/*	case LIST_CONNECTED_USERS:
 			//Receiving data from server and printing:
 			tmp.clear();
 			tmp = readData(server);
 			cout<<tmp<<endl;
 			break;
-
+*/
 
 		case LIST_ROOMS:
 			//Receiving data from server and printing:

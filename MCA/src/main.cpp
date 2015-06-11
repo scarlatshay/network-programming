@@ -63,10 +63,10 @@ int main()
 		{
 			mca->listAllActiveUsers();
 		}
-		else if(command == "lcu")
+		/*else if(command == "lcu")
 		{
 			mca->LIST_CONNECTED_USERS();
-		}
+		}*/
 		else if(command == "lr")
 		{
 			mca->listAllOpenRooms();
