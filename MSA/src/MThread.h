@@ -1,9 +1,3 @@
-/*
- * MThread.h
- *
- *  Created on: Feb 13, 2013
- *      Author: efi
- */
 
 #ifndef MTHREAD_H_
 #define MTHREAD_H_

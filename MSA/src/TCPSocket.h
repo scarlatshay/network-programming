@@ -64,6 +64,11 @@ public:
 	string fromAddr();
 
 	/**
+	 * return the ip and port, separated by a ":"
+	 */
+	string getIPandPort();
+
+	/**
 	 * returns the c socket fid
 	 */
 	int getSocketFid(){
@@ -71,4 +76,4 @@ public:
 	}
 };
 
-#endif
+#endif /* TCP_SOCKET_H_ */

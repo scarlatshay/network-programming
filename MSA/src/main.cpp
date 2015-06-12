@@ -14,7 +14,6 @@ void printInstructions() {
 
 int main() {
 	MessageServerApp msa;
-	msa.start();
 
 	cout << "Welcome to the Messege Server App!" << endl;
 	printInstructions();
@@ -28,20 +27,20 @@ int main() {
 		cin >> command;
 
 		if (command == "lu") {
-			msa.listAllUsers();
+			msa.listUsers();
 		}
 		else if (command == "lcu") {
-			msa.listAllConnectedUsers();
+			msa.listConnectedUsers();
 		}
 		else if (command == "ls") {
-			msa.listAllSessions();
+			msa.listSessions();
 		}
 		else if (command == "lr") {\
-			msa.listAllRooms();
+			msa.listRooms();
 		}
 		else if (command == "lru") {
 			// TODO: switch from equals to contains, put room number into function
-			msa.listAllUsersInRooms("STAM");
+			msa.listUsersInRooms("STAM");
 		}
 		else if (command == "x") {
 			loop = false;

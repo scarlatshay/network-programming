@@ -1,3 +1,5 @@
+#ifndef USER_H_
+#define USER_H_
 #include <string>
 #include <iostream>
 #include "TCPSocket.h"
@@ -9,6 +11,8 @@
 
 using namespace std;
 
+class TCPSocket;
+
 class User {
 
 private:
@@ -16,6 +20,7 @@ private:
 	string udpPort;
 	string username;
 	string password;
+	string sessionName;
 	bool connected;
 	bool authenticated;
 	bool inSession;
@@ -35,15 +40,16 @@ public:
 	string getUsername();
 	string getPassword();
 	string getUdpPort();
+	string getSessionName();
 	TCPSocket* getSocket();
 	bool isConnected();
 	bool isAuthenticated();
 	bool isInSession();
 
-
 	// Setters
 	void setUdpPort(string port);
 	void setSocket(TCPSocket* socket);
+	void setSessionName(string sessionName);
 
 	// Other Methods
 	void closeSession();
@@ -53,3 +59,5 @@ public:
 	// DTOR
 	virtual ~User();
 };
+
+#endif /* USER_H_ */

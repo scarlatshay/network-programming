@@ -112,6 +112,10 @@ string User::getUdpPort() {
 	return this->udpPort;
 }
 
+string User::getSessionName() {
+	return this->sessionName;
+}
+
 TCPSocket* User::getSocket() {
 	return this->socket;
 }
@@ -130,6 +134,10 @@ void User::setUdpPort(string port) {
 
 void User::setSocket(TCPSocket* socket) {
 	this->socket = socket;
+}
+
+void User::setSessionName(string sessionName) {
+	this->sessionName = sessionName;
 }
 
 void User::closeSession() {

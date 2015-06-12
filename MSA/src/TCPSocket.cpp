@@ -39,7 +39,6 @@ TCPSocket::TCPSocket(int port){
 	serverAddr.sin_port = htons((u_short)port);
 
 	//bind the socket on the specified address
-	printf("TCP server binding...\n");
 	if (bind(socket_fd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
 	{
 		perror ("Error naming channel");
@@ -107,4 +106,13 @@ void TCPSocket::cclose(){
 
 string TCPSocket::fromAddr(){
 	return inet_ntoa(peerAddr.sin_addr);
+}
+
+string TCPSocket::getIPandPort() {
+	string ipAndPort = inet_ntoa(peerAddr.sin_addr);
+	ipAndPort.append(":");
+	char buff[10];
+	sprintf(buff,"%d",ntohs(peerAddr.sin_port));
+	ipAndPort.append(buff);
+	return ipAndPort;
 }

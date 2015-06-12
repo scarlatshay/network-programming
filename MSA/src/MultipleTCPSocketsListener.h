@@ -1,10 +1,3 @@
-/*
- * MultipleTCPSocketsListener.h
- *
- *  Created on: Feb 14, 2013
- *      Author: efi
- */
-
 #ifndef MULTIPLETCPSOCKETSLISTENER_H_
 #define MULTIPLETCPSOCKETSLISTENER_H_
 
@@ -12,6 +5,8 @@
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
+#include <sys/types.h>
+#include <sys/select.h>
 #include "TCPSocket.h"
 
 using namespace std;
